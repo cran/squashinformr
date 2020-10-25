@@ -3,6 +3,14 @@
 
 <!-- badges: start -->
 
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/squashinformr)](https://CRAN.R-project.org/package=squashinformr)
+[![CRAN 
+Downloads](https://cranlogs.r-pkg.org/badges/squashinformr)](https://cranlogs.r-pkg.org/badges/squashinformr)
+[![CRAN 
+total](https://cranlogs.r-pkg.org/badges/grand-total/squashinformr)](https://cranlogs.r-pkg.org/badges/grand-total/squashinformr) 
 [![R build
 status](https://github.com/HaydenMacDonald/squashinformr/workflows/R-CMD-check/badge.svg)](https://github.com/HaydenMacDonald/squashinformr/actions)
 [![AppVeyor build
@@ -20,6 +28,12 @@ tournaments. The functions within this package scrape, parse, and clean
 data associated with players, tournaments, and rankings.
 
 ## Installation
+
+Install `squashinformr` via CRAN:
+
+``` r
+install.packages("squashinformr")
+```
 
 Install the development version of `squashinformr` from this GitHub
 repository via:
@@ -64,20 +78,21 @@ library(squashinformr)
 get_player_recent_matches(player = "Mohamed Elshorbagy", category = "mens")
 #> Scraping http://www.squashinfo.com/rankings/men/1
 #> Scraping Mohamed Elshorbagy's profile
-#> # A tibble: 75 x 12
-#>     rank player             opponent          result games_won games_lost match_time round date       event                    country psa  
-#>    <int> <chr>              <chr>             <chr>      <dbl>      <dbl>      <dbl> <chr> <date>     <chr>                    <chr>   <chr>
-#>  1     1 Mohamed Elshorbagy Ali Farag         W              3          1         79 F     2020-03-01 Canary Wharf Classic     ENG     Y    
-#>  2     1 Mohamed Elshorbagy Tarek Momen       W              3          1         49 SF    2020-03-01 Canary Wharf Classic     ENG     Y    
-#>  3     1 Mohamed Elshorbagy Saurav Ghosal     W              2          1         51 QF    2020-03-01 Canary Wharf Classic     ENG     Y    
-#>  4     1 Mohamed Elshorbagy Mathieu Castagnet W              2          1         48 R2    2020-03-01 Canary Wharf Classic     ENG     Y    
-#>  5     1 Mohamed Elshorbagy Paul Coll         L              0          3         51 QF    2020-03-01 Windy City Open          USA     Y    
-#>  6     1 Mohamed Elshorbagy Mazen Hesham      W             NA         NA         NA R3    2020-03-01 Windy City Open          USA     Y    
-#>  7     1 Mohamed Elshorbagy Daryl Selby       W              3          0         30 R2    2020-03-01 Windy City Open          USA     Y    
-#>  8     1 Mohamed Elshorbagy Paul Coll         L              1          2         NA -     2020-02-01 Premier League 8th Round ENG     N    
-#>  9     1 Mohamed Elshorbagy Peter Creed       W              2          0         NA -     2020-01-01 Premier League 7th Round ENG     N    
-#> 10     1 Mohamed Elshorbagy Tarek Momen       W              3          1         76 F     2020-01-01 Tournament of Champions  USA     Y    
-#> # ... with 65 more rows
+#> # A tibble: 80 x 12
+#>     rank player opponent result games_won games_lost match_time round date      
+#>    <int> <chr>  <chr>    <chr>      <dbl>      <dbl>      <dbl> <chr> <date>    
+#>  1     1 Moham~ Karim A~ W              3          1         73 F     2020-09-01
+#>  2     1 Moham~ Paul Co~ W              3          2         84 SF    2020-09-01
+#>  3     1 Moham~ Joel Ma~ W              3          1         69 QF    2020-09-01
+#>  4     1 Moham~ James W~ W              3          0         36 R2    2020-09-01
+#>  5     1 Moham~ Raphael~ W              3          0         34 R1    2020-09-01
+#>  6     1 Moham~ Ali Far~ W              3          1         79 F     2020-03-01
+#>  7     1 Moham~ Tarek M~ W              3          1         49 SF    2020-03-01
+#>  8     1 Moham~ Saurav ~ W              2          1         51 QF    2020-03-01
+#>  9     1 Moham~ Mathieu~ W              2          1         48 R2    2020-03-01
+#> 10     1 Moham~ Paul Co~ L              0          3         51 QF    2020-03-01
+#> # ... with 70 more rows, and 3 more variables: event <chr>, country <chr>,
+#> #   psa <chr>
 ```
 
 ### `get_player_rankings_history()`
@@ -98,7 +113,7 @@ ggplot(top_three) +
    labs(x = "Date", y = "Rank", colour = "Player")
 ```
 
-<img src="man/figures/unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/unnamed-chunk-4-1.png" width="100%" />
 
 ### `get_tournament_games()`
 
@@ -112,22 +127,25 @@ get_tournament_games("tournament of champions", year = 2020)
 #> Scraping http://www.squashinfo.com/results?start=3
 #> Scraping http://www.squashinfo.com/results?start=4
 #> Scraping http://www.squashinfo.com/results?start=5
+#> Scraping http://www.squashinfo.com/results?start=6
 #> Scraping http://www.squashinfo.com/events/8367-mens-tournament-of-champions-2020
 #> Scraping http://www.squashinfo.com/events/8368-womens-tournament-of-champions-2020
 #> # A tibble: 388 x 15
-#>    tournament_name   category tournament_date round match  game player_1  player_2  game_winner player_1_score player_2_score player_1_seed player_2_seed player_1_nation~ player_2_nation~
-#>    <chr>             <chr>    <date>          <ord> <int> <int> <chr>     <chr>     <chr>                <dbl>          <dbl>         <dbl>         <dbl> <chr>            <chr>           
-#>  1 JP Morgan Tourna~ Men's    2020-01-17      F        64     4 Mohamed ~ Tarek Mo~ Mohamed El~             11              5             2             4 EGY              EGY             
-#>  2 JP Morgan Tourna~ Men's    2020-01-17      F        64     3 Mohamed ~ Tarek Mo~ Mohamed El~             11              7             2             4 EGY              EGY             
-#>  3 JP Morgan Tourna~ Men's    2020-01-17      F        64     2 Mohamed ~ Tarek Mo~ Mohamed El~             11              7             2             4 EGY              EGY             
-#>  4 JP Morgan Tourna~ Men's    2020-01-17      F        64     1 Mohamed ~ Tarek Mo~ Tarek Momen              9             11             2             4 EGY              EGY             
-#>  5 JP Morgan Tourna~ Women's  2020-01-17      F        62     3 Camille ~ Nour El ~ Camille Se~             11              7             5             2 FRA              EGY             
-#>  6 JP Morgan Tourna~ Women's  2020-01-17      F        62     2 Camille ~ Nour El ~ Camille Se~             11              6             5             2 FRA              EGY             
-#>  7 JP Morgan Tourna~ Women's  2020-01-17      F        62     1 Camille ~ Nour El ~ Camille Se~             11              8             5             2 FRA              EGY             
-#>  8 JP Morgan Tourna~ Men's    2020-01-17      SF       63     5 Tarek Mo~ Ali Farag Tarek Momen             11              7             4             1 EGY              EGY             
-#>  9 JP Morgan Tourna~ Men's    2020-01-17      SF       63     4 Tarek Mo~ Ali Farag Ali Farag                8             11             4             1 EGY              EGY             
-#> 10 JP Morgan Tourna~ Men's    2020-01-17      SF       63     3 Tarek Mo~ Ali Farag Ali Farag                7             11             4             1 EGY              EGY             
-#> # ... with 378 more rows
+#>    tournament_name category tournament_date round match  game player_1 player_2
+#>    <chr>           <chr>    <date>          <ord> <int> <int> <chr>    <chr>   
+#>  1 JP Morgan Tour~ Men's    2020-01-17      F        64     4 Mohamed~ Tarek M~
+#>  2 JP Morgan Tour~ Men's    2020-01-17      F        64     3 Mohamed~ Tarek M~
+#>  3 JP Morgan Tour~ Men's    2020-01-17      F        64     2 Mohamed~ Tarek M~
+#>  4 JP Morgan Tour~ Men's    2020-01-17      F        64     1 Mohamed~ Tarek M~
+#>  5 JP Morgan Tour~ Women's  2020-01-17      F        62     3 Camille~ Nour El~
+#>  6 JP Morgan Tour~ Women's  2020-01-17      F        62     2 Camille~ Nour El~
+#>  7 JP Morgan Tour~ Women's  2020-01-17      F        62     1 Camille~ Nour El~
+#>  8 JP Morgan Tour~ Men's    2020-01-17      SF       63     5 Tarek M~ Ali Far~
+#>  9 JP Morgan Tour~ Men's    2020-01-17      SF       63     4 Tarek M~ Ali Far~
+#> 10 JP Morgan Tour~ Men's    2020-01-17      SF       63     3 Tarek M~ Ali Far~
+#> # ... with 378 more rows, and 7 more variables: game_winner <chr>,
+#> #   player_1_score <dbl>, player_2_score <dbl>, player_1_seed <dbl>,
+#> #   player_2_seed <dbl>, player_1_nationality <chr>, player_2_nationality <chr>
 ```
 
 ### `get_rankings()`
@@ -141,18 +159,18 @@ library(dplyr)
 get_rankings(top = 5, category = "both") %>%
     arrange(category, rank)
 #> # A tibble: 10 x 7
-#>     rank previous_rank name               highest_ranking hwr_date   country category
-#>    <int>         <int> <chr>                        <int> <date>     <chr>   <chr>   
-#>  1     1             1 Mohamed Elshorbagy               1 2014-11-01 EGY     Men's   
-#>  2     2             2 Ali Farag                        1 2019-03-01 EGY     Men's   
-#>  3     3             4 Karim Abdel Gawad                1 2017-05-01 EGY     Men's   
-#>  4     4             3 Tarek Momen                      3 2019-02-01 EGY     Men's   
-#>  5     5             5 Paul Coll                        5 2019-04-01 NZL     Men's   
-#>  6     1             1 Raneem El Welily                 1 2015-09-01 EGY     Women's 
-#>  7     2             2 Nouran Gohar                     2 2017-01-01 EGY     Women's 
-#>  8     3             4 Nour El Sherbini                 1 2016-05-01 EGY     Women's 
-#>  9     4             3 Camille Serme                    2 2017-02-01 FRA     Women's 
-#> 10     5             5 Nour El Tayeb                    3 2018-02-01 EGY     Women's
+#>     rank previous_rank name          highest_ranking hwr_date   country category
+#>    <int>         <int> <chr>                   <int> <date>     <chr>   <chr>   
+#>  1     1             1 Mohamed Elsh~               1 2014-11-01 EGY     Men's   
+#>  2     2             2 Ali Farag                   1 2019-03-01 EGY     Men's   
+#>  3     3             3 Karim Abdel ~               1 2017-05-01 EGY     Men's   
+#>  4     4             4 Tarek Momen                 3 2019-02-01 EGY     Men's   
+#>  5     5             5 Paul Coll                   5 2019-04-01 NZL     Men's   
+#>  6     1             1 Nouran Gohar                1 2020-07-01 EGY     Women's 
+#>  7     2             2 Nour El Sher~               1 2016-05-01 EGY     Women's 
+#>  8     3             3 Camille Serme               2 2017-02-01 FRA     Women's 
+#>  9     4             4 Nour El Tayeb               3 2018-02-01 EGY     Women's 
+#> 10     5             5 Sarah-Jane P~               5 2020-07-01 ENG     Women's
 ```
 
 ### `get_matchup()`
@@ -169,11 +187,16 @@ percentage of games that go to a tie-breaker.
 ## Get tidy matchup stats for Paul Coll vs Diego Elias
 get_matchup("Paul Coll", "Diego Elias", category = "mens", tidy = TRUE)
 #> # A tibble: 1 x 23
-#>   player_1_rank player_1 player_2_rank player_2 matches_played player_1_matche~ player_2_matche~ matches_3_2 matches_3_1 matches_3_0 matches_0_3 matches_1_3 matches_2_3 avg_match_time
-#>           <int> <chr>            <int> <chr>             <int>            <int>            <int>       <int>       <int>       <int>       <int>       <int>       <int>          <dbl>
-#> 1             5 Paul Co~             6 Diego E~              2                1                1           0           1           0           0           0           1             98
-#> # ... with 9 more variables: games_played <int>, player_1_games_won <int>, player_2_games_won <int>, player_1_avg_advantage <dbl>, player_2_avg_advantage <dbl>, avg_point_diff <dbl>,
-#> #   player_1_tiebreak_wins <int>, player_2_tiebreak_wins <int>, pct_games_tiebreak <dbl>
+#>   player_1_rank player_1 player_2_rank player_2 matches_played player_1_matche~
+#>           <int> <chr>            <int> <chr>             <int>            <int>
+#> 1             5 Paul Co~             6 Diego E~              2                1
+#> # ... with 17 more variables: player_2_matches_won <int>, matches_3_2 <int>,
+#> #   matches_3_1 <int>, matches_3_0 <int>, matches_0_3 <int>, matches_1_3 <int>,
+#> #   matches_2_3 <int>, avg_match_time <dbl>, games_played <int>,
+#> #   player_1_games_won <int>, player_2_games_won <int>,
+#> #   player_1_avg_advantage <dbl>, player_2_avg_advantage <dbl>,
+#> #   avg_point_diff <dbl>, player_1_tiebreak_wins <int>,
+#> #   player_2_tiebreak_wins <int>, pct_games_tiebreak <dbl>
 ```
 
 ## Help

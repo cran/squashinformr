@@ -1,6 +1,6 @@
 Package: squashinformr
 Title: Politely Web Scrape Data from SquashInfo
-Version: 0.1.2
+Version: 0.1.4
 Authors@R: c(person("Hayden", "MacDonald", role = c("aut", "cre"),
                      email = "hayden.macdonald.8778@gmail.com"))
 Author: Hayden MacDonald [aut, cre]
@@ -18,8 +18,8 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/HaydenMacDonald/squashinformr
 BugReports: https://github.com/HaydenMacDonald/squashinformr/issues
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2020-04-27 13:33:23 UTC; Hayden
+Packaged: 2020-10-25 18:20:36 UTC; Hayden
 Repository: CRAN
-Date/Publication: 2020-05-01 18:30:02 UTC
+Date/Publication: 2020-10-25 18:40:02 UTC
