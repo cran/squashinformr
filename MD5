@@ -1,7 +1,7 @@
-730dc87ffca24f3945a496bef27323fa *DESCRIPTION
+bf14ce3fad91f1f07ffc84a478f035aa *DESCRIPTION
 1e1d3e71fb4f6e26c4b9d8edd90d5ce8 *NAMESPACE
 7226c67d3bc64e1c8eb091502e5fc8a9 *R/get_historical_rankings.R
-0e056d3bb9cda033d14cd53f4ec70447 *R/get_matchup.R
+9744c206c843ab95814a4ca8206f3092 *R/get_matchup.R
 fd659c10657810063db697524c9678e0 *R/get_player_rankings_history.R
 218d629e8835542ea2b55ce07549066c *R/get_player_recent_games.R
 6c0e539b06ba5ff4f274bf86bd1c5124 *R/get_player_recent_matches.R
